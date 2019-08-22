@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<form name="calcForm" method="get" action="http://localhost:8080/testServlet/calc">
+	<table align="center" style="width: 30%;height: 100px;" border="1">
+	<tbody>
+			<tr>
+				<td align="center" width="20%">이름</td>
+				<td><input type="text" name="name" id="name" maxlength="5"></td>
+
+			</tr>
+			<tr>
+				<td align="center" width="20%">성별</td>
+				<td>
+					<input type="radio" name="gender" id="male" value="0">남<br>
+					<input type="radio" name="gender" id="female" value="1">여<br>
+				</td>
+
+			</tr>
+			<tr>
+				<td align="center" width="20%">취미</td>
+				<td>
+					<input type="checkbox" name="hobby" value="Reading">독서<br>
+					<input type="checkbox" name="hobby" value="Music">음악<br>
+					<input type="checkbox" name="hobby" value="Movie">영화<br>
+					<input type="checkbox" name="hobby" value="Shopping">쇼핑<br>
+					<input type="checkbox" name="hobby" value="Exercise">운동<br>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" width="20%">색깔</td>
+				<td>
+					<select>
+					  <option name="color" value="red">빨강</option>
+					  <option name="color" value="green">초록</option>
+					  <option name="color" value="blue">파랑</option>
+					  <option name="color" value="magenta">보라</option>
+					  <option name="color" value="cyan">하늘</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" width="20%">과목</td>
+				<td>
+					<select size="6">
+					  <option name="subject" value="red">Java</option>
+					  <option name="subject" value="green">Servlet</option>
+					  <option name="subject" value="blue">Spring</option>
+					  <option name="subject" value="magenta">JQuery</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="SEBD">
+					<input type="reset" value="CANCEL">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+ </body>
+</html>

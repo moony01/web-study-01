@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>memberServlet</display-name>
+  <display-name>guestbookServlet</display-name>
   
   <servlet>
-  	<servlet-name>WriteServlet</servlet-name>
-  	<servlet-class>member.action.WriteServlet</servlet-class>
+  	<servlet-name>GuestbookWriteServlet</servlet-name>
+  	<servlet-class>guestbook.action.GuestbookWriteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>WriteServlet</servlet-name>
-  	<url-pattern>/WriteServlet</url-pattern>
+  	<servlet-name>GuestbookWriteServlet</servlet-name>
+  	<url-pattern>/GuestbookWriteServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GuestbookListServlet</servlet-name>
+  	<servlet-class>guestbook.action.GuestbookListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GuestbookListServlet</servlet-name>
+  	<url-pattern>/GuestbookListServlet</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>
