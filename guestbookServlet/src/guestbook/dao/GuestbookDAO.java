@@ -72,13 +72,21 @@ public class GuestbookDAO {
 		}		
 	}
 	
-	public ArrayList<GuestbookDTO> getGuestbookList() {
+	public ArrayList<GuestbookDTO> getGuestbookList(int startNum, int endNum) {
 		ArrayList<GuestbookDTO> arrayList = new ArrayList<GuestbookDTO>();
+		//부모 = 자식
 		getConnection();
-		String sql = "select * from guestbook";
+		String sql = "select * from " + 
+				"(select rownum rn, tt.* from " + 
+				"(select seq, name, email, homepage, subject, content, to_char(logtime, 'YYYY-MM-DD') as logtime " + 
+				"from guestbook order by seq desc) tt)" + 
+				"where rn>=? and rn<=?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startNum);
+			pstmt.setInt(2, endNum);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				GuestbookDTO dto = new GuestbookDTO();
@@ -94,7 +102,7 @@ public class GuestbookDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			arrayList = null;	//에러 발생 했을때 arrayList를 null 해줘야됨. 
+			arrayList = null;	//에러 발생 했을때 ar rayList를 null 해줘야됨. 
 		} finally {
 			try { // 종료
 				if (rs != null) rs.close();
@@ -107,4 +115,27 @@ public class GuestbookDAO {
 		return arrayList;
 	}
 
+	public int getTotalA() {
+		int totalA = 0;
+		String sql = "select count(*) from guestbook";
+		getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) totalA = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { // 종료
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return totalA;
+	}
 }

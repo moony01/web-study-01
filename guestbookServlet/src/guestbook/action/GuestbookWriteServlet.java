@@ -44,7 +44,8 @@ public class GuestbookWriteServlet extends HttpServlet {
 
 		out.println("작성하신 글을 저장하였습니다.");
 		out.println("<br><br>");
-		out.println("<input type='button' value='글목록' onclick=location.href='/guestbookServlet/GuestbookListServlet'>");
+		out.println("<input type='button' value='글목록' "
+				+ "onclick=location.href='/guestbookServlet/GuestbookListServlet?pg=1'>");
 
 		out.println("</body>");
 		out.println("</html>");
