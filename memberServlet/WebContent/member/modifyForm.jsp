@@ -1,15 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="member.bean.MemberDTO" %>
+<%@ page import="member.dao.MemberDAO" %>
+<%
+//데이터
+request.setCharacterEncoding("UTF-8");
+
+String id = request.getParameter("id");
+
+//DB
+MemberDAO memberDAO = MemberDAO.getInstance();
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원정보수정</title>
 </head>
 <body>
-<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
+<form name="writeForm" method="post" action="">
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
 	<th width="80">이름</th>
-	<td><input type="text" name="name" id="name" placeholder="이름 입력"></td>
+	<td><input type="text" name="name" id="name" value="<%=id%>"></td>
 </tr>
 <tr>
 	<th width="80">아이디</th>
@@ -76,7 +91,4 @@
 </table>
 </form>
 </body>
-
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/memberServlet/js/member.js" type="text/javascript"></script>
 </html>

@@ -80,7 +80,7 @@ public class MemberDAO {
 		
 		return su;
 	}
-	
+
 	public String login(String id, String pwd) {
 		String name=null;
 		String sql = "select * from member where id=? and pwd=?";
@@ -99,7 +99,7 @@ public class MemberDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if(rs != null) rs.close();
 				if(pstmt != null) pstmt.close();
@@ -112,6 +112,35 @@ public class MemberDAO {
 		return name;
 	}
 
+	
+	public boolean isExistId(String id){ //public으로 지정하고 boolean형으로 리턴하겠다.
+		
+		boolean exist = false;
+		String sql = "select * from member where id=?";
+		getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();//실행
+			
+			if(rs.next()) exist = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return exist;
+	}
 }
 
 

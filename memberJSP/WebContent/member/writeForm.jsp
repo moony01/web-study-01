@@ -1,11 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Insert title here</title>
 </head>
 <body>
-<form name="writeForm" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
+<form name="writeForm" method="post" action="/memberJSP/member/write.jsp">
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
 	<th width="80">이름</th>
@@ -13,7 +16,11 @@
 </tr>
 <tr>
 	<th width="80">아이디</th>
-	<td><input type="text" name="id" placeholder="아이디 입력" style="width: 200px;"></td>
+	<td>
+		<input type="text" name="id" placeholder="아이디 입력" style="width: 200px;">
+		<input type="button" value="중복체크" onclick="checkId()">
+		<input type="hidden" name="check" value="">
+	</td>
 </tr>
 <tr>
 	<th width="80">비밀번호</th>
@@ -78,5 +85,5 @@
 </body>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/memberServlet/js/member.js" type="text/javascript"></script>
+<script src="../js/member.js" type="text/javascript"></script>
 </html>
