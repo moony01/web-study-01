@@ -67,3 +67,19 @@ function checkLogin(){
 	else
 		document.loginForm.submit();
 }
+
+function checkId(){
+	
+	var sId = document.writeForm.id.value;
+	if(sId=="")
+		alert("먼저 아이디를 입력하세요");
+	else
+		window.open("/memberServlet/member/checkId.jsp?id="+sId,
+					"",
+					"width=450 height=100 left=500 top=150 locations=yes");
+}
+
+function modify(){
+	alert("abc");
+}
+

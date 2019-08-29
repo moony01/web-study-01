@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,7 @@
 <title>로그인</title>
 </head>
 <body>
-<form name="loginForm" method="post" action="http://localhost:8080/memberServlet/LoginServlet">
+<form name="loginForm" method="post" action="login.jsp">
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
 	<th width="80">아이디</th>
@@ -18,11 +20,29 @@
 <tr>
 	<td colspan="2" align="center">
 		<input type="button" value="로그인" onclick="checkLogin()">
-		<input type="button" value="회원가입" onclick="">
+		<input type="button" value="회원가입" onclick="location.href='writeForm.jsp'">
 	</td>
 </tr>
 </table>
 </form>
 </body>
-<script src="http://localhost:8080/memberServlet/js/member.js" type="text/javascript"></script>
+<script src="../js/member.js" type="text/javascript"></script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

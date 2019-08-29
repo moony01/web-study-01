@@ -111,6 +111,12 @@ public class MemberDAO {
 		
 		return name;
 	}
+	
+	public boolean isExistId(String id) {
+		boolean exist = false;
+		
+		return exist;
+	}
 
 }
 

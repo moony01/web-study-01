@@ -3,12 +3,11 @@
 <%@ page import="member.bean.MemberDTO" %>
 <%@ page import="member.dao.MemberDAO" %>
 <%
-//데이터
-request.setCharacterEncoding("UTF-8");
-
-String id = request.getParameter("id");
 
 //DB
+MemberDTO memberDTO = new MemberDTO();
+
+
 MemberDAO memberDAO = MemberDAO.getInstance();
 
 %>
@@ -24,7 +23,7 @@ MemberDAO memberDAO = MemberDAO.getInstance();
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
 	<th width="80">이름</th>
-	<td><input type="text" name="name" id="name" value="<%=id%>"></td>
+	<td><input type="text" name="name" id="name" value="<%=name%>"></td>
 </tr>
 <tr>
 	<th width="80">아이디</th>

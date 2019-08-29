@@ -30,10 +30,12 @@ String name = memberDAO.login(id,pwd);
 <form name="login" method="post" action="./modifyForm.jsp">
 	<%=name %>님이 로그인하였습니다.
 	<br><br>
-	<input type="button" name="id" value="로그아웃">
-	<input type="submit" value="회원정보수정">
+	<input type="button" value="로그아웃">
+	<input type="button" value="회원정보수정" onclick="modify()">
 </form>
 <%} %>
 
 </body>
+
+<script src="../js/member.js" type="text/javascript"></script>
 </html>

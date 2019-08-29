@@ -15,12 +15,12 @@
 </tr>
 <tr>
 	<th width="80">비밀번호</th>
-	<td><input type="password" name="pwd" style="width: 230px;"></td>
+	<td><input type="password" name="pwd" style="width: 100px;"></td>
 </tr>
 <tr>
 	<td colspan="2" align="center">
 		<input type="button" value="로그인" onclick="checkLogin()">
-		<input type="button" value="회원가입" onclick="">
+		<input type="button" value="회원가입" onclick="location.href='writeForm.jsp'">
 	</td>
 </tr>
 </table>
