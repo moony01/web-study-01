@@ -20,7 +20,7 @@
 <tr>
 	<td colspan="2" align="center">
 		<input type="button" value="로그인" onclick="checkLogin()">
-		<input type="button" value="회원가입" onclick="location.href='writeForm.jsp'">
+		<input type="button" value="회원가입" onclick="location.href='writeForm.html'">
 	</td>
 </tr>
 </table>
