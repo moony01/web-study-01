@@ -11,7 +11,6 @@ String pwd = request.getParameter("pwd");
 //DB
 MemberDAO memberDAO = MemberDAO.getInstance();
 MemberDTO memberDTO = memberDAO.login(id,pwd);
-
 %>
 <!DOCTYPE html>
 <html>

@@ -1,16 +1,13 @@
-function checkBoardWrite() {
-	if(document.boardWriteForm.subject.value == "")
-	{
+function checkBoard() {
+	if(document.getElementById("subject").value == "") {
 		alert("제목을 입력하세요.");
-		document.writeForm.subject.focus();
-	}
-	else if(document.boardWriteForm.content.value == "")
-	{
+		document.getElementById("subject").focus();
+	
+	}else if(document.getElementById("content").value == "") {
 		alert("내용을 입력하세요.");
-		document.boardWriteForm.content.focus();
-	}
-	else
-	{
-		document.boardWriteForm.submit();
+		document.getElementById("content").focus();
+	
+	}else{
+		document.forms[0].submit();
 	}
 }

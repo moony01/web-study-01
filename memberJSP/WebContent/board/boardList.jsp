@@ -2,10 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="board.bean.BoardDTO" %>
+<%@ page import="board.bean.BoardPaging" %>
 
 <jsp:useBean id="boardDAO" class="board.dao.BoardDAO" />
 
 <%
+//세션
+String memId = "";
+if(session.getAttribute("memId")!=null)
+	memId = (String)session.getAttribute("memId");
+
 //데이터
 int pg = Integer.parseInt(request.getParameter("pg"));
 
@@ -13,12 +19,29 @@ int pg = Integer.parseInt(request.getParameter("pg"));
 int endNum = pg*5;
 int startNum = endNum-4;
 List<BoardDTO> list = boardDAO.boardList(startNum, endNum);
+
+//페이징 처리
+BoardPaging boardPaging = new BoardPaging();
+int totalA = boardDAO.getTotalA();//총글수
+boardPaging.setCurrentPage(pg);
+boardPaging.setPageBlock(3);
+boardPaging.setPageSize(5);
+boardPaging.setTotalA(totalA);
+boardPaging.makePagingHTML();
+
+//조회수-새로고침 방지
+if(session.getAttribute("memId")!=null){
+	Cookie cookie = new Cookie("memHit", "0");
+	cookie.setMaxAge(30*60);
+	response.addCookie(cookie);//클라이언트에게 보내기
+}
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/boaard.css">
 </head>
 <body>
 
@@ -34,18 +57,44 @@ List<BoardDTO> list = boardDAO.boardList(startNum, endNum);
 	<%for(BoardDTO boardDTO : list){ %>
 		<tr>
 			<td align="center" width="100"><%=boardDTO.getSeq() %></td>
-			<td width="200"><%=boardDTO.getSubject() %></td>
+			<td width="200">
+				<a href="javascript:void(0)" id="subjectA" 
+				onclick="isLogin(<%=boardDTO.getSeq() %>,<%=pg%>)">
+				<%=boardDTO.getSubject() %>
+				</a>
+			</td>
 			<td align="center" width="100"><%=boardDTO.getId() %></td>
 			<td align="center" width="100"><%=boardDTO.getLogtime() %></td>
 			<td align="center" width="100"><%=boardDTO.getHit() %></td>
 		</tr>
 	<%}//for %>
 </table>
+<img src="../image/lionjpg.jpg" width="50" height="50" 
+onclick="location.href='../main/index.jsp'" style="cursor: pointer; float: left;">
+<div style="width: 600px; text-align: center; float: left;"><%=boardPaging.getPagingHTML() %></div>
 <%}//if %>
-<img src="../image/dog.png" width="50" height="50" 
-onclick="location.href='../main/index.jsp'" style="cursor: pointer;">
+
 </body>
+<script type="text/javascript">
+function isLogin(seq,pg){
+	if("<%=memId%>"=="")
+		alert("먼저 로그인하세요");
+	else
+		location.href="boardView.jsp?seq="+seq+"&pg="+pg;		
+}
+</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

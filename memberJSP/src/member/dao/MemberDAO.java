@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import member.bean.MemberDTO;
 import member.bean.ZipcodeDTO;
 import oracle.jdbc.proxy.annotation.GetCreator;
@@ -15,31 +20,22 @@ import oracle.jdbc.proxy.annotation.GetCreator;
 public class MemberDAO {
 	private static MemberDAO instance; // 인스턴스 생성
 
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "java";
-	private String password = "dkdlxl";
-
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	private DataSource ds;
+	
 	public MemberDAO() {
 		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
+			Context ctx = new InitialContext();
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");//tomcat의 경우
+			
+		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void getConnection() {
-		try {
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public static MemberDAO getInstance() { 
 		if (instance == null) {
 			synchronized (MemberDAO.class) {
@@ -53,8 +49,10 @@ public class MemberDAO {
 	public int write(MemberDTO memberDTO) {
 		int su = 0;
 		String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
-		getConnection();
+		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getName());
 			pstmt.setString(2, memberDTO.getId());
@@ -89,9 +87,10 @@ public class MemberDAO {
 	public MemberDTO login(String id,String pwd) {
 		MemberDTO memberDTO = null;
 		String sql = "select * from member where id=? and pwd=?";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,id);
 			pstmt.setString(2, pwd);
@@ -129,9 +128,10 @@ public class MemberDAO {
 	public boolean isExistId(String id){
 		boolean exist = false;
 		String sql = "select * from member where id=?";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			
@@ -159,8 +159,9 @@ public class MemberDAO {
 											+ " and nvl(sigungu, '0') like ? "
 											+ " and roadname like ?";
 		
-		getConnection();
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+sido+"%");
 			pstmt.setString(2, "%"+sigungu+"%");
@@ -200,9 +201,10 @@ public class MemberDAO {
 	public MemberDTO getMember(String id){
 		MemberDTO memberDTO = null;
 		String sql = "select * from member where id=?";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -253,8 +255,9 @@ public class MemberDAO {
 									+ ", addr2=? "
 									+ ", logtime=sysdate where id=?";
 		
-		getConnection();
 		try {
+			conn = ds.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getName());
 			pstmt.setString(2, memberDTO.getPwd());
