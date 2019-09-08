@@ -91,6 +91,7 @@ MemberDTO memberDTO = memberDAO.getMember(id);
 </table>
 </form>
 </body>
+<script type="text/javascript" src="../js/member.js"></script>
 <script type="text/javascript">
 window.onload=function(){
 	document.modifyForm.gender['<%=memberDTO.getGender() %>'].checked = true;

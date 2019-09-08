@@ -91,7 +91,9 @@ td, option { font-size: 8pt;}
 	%>
 	<tr>
 		<td align="center"><%=zipcodeDTO.getZipcode() %></td>
-		<td colspan="3"><a id="addressA" href="#" onclick="checkPostClose('<%=zipcodeDTO.getZipcode() %>','<%=address %>')"><%=address %></a></td>
+		<td colspan="3">
+			<a id="addressA" href="#" onclick="checkPostClose('<%=zipcodeDTO.getZipcode() %>','<%=address %>')"><%=address %></a>
+		</td>
 	</tr>
 	<%}//for %>
 <%}//if %>
