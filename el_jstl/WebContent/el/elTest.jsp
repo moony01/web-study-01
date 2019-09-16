@@ -25,7 +25,7 @@
 
 <tr>
 	<td align="center">\${25 div 3}</td>
-	<td align="center">${25 div 3}</td>
+	<!-- <td align="center">${25 div 3}</td> -->
 </tr>
 
 <tr>
@@ -44,9 +44,9 @@
 </tr>
 
 <tr>
-	<!-- >(gt), <(lt), >=(ge), <=(le), ==(eq), !=(ne) -->
+	<!-- (gt), <(lt), >=(ge), <=(le), ==(eq), !=(ne) -->
 	<td align="center">\${25 ne 3 }</td>
-	<td align="center">${25 ne 3 }</td>
+	<!-- <td align="center">${25 ne 3 }</td> -->
 </tr>
 
 <tr>

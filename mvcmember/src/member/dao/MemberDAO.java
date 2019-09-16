@@ -35,7 +35,7 @@ public class MemberDAO {
 		}
 	}
 	
-	public static MemberDAO getInstance() { 
+	public static MemberDAO getInstance() {
 		if (instance == null) {
 			synchronized (MemberDAO.class) {
 				instance = new MemberDAO(); 

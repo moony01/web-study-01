@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -60,21 +60,25 @@ td, option { font-size: 8pt;}
 	<td colspan="3" align="center">주소</td>
 </tr>
 
-<%if(list!=null){ %>
-	<%for(ZipcodeDTO zipcodeDTO : list){ 
-		String address = zipcodeDTO.getSido()+" "
-					  + zipcodeDTO.getSigungu()+" "
-					  + zipcodeDTO.getYubmyundong()+" "
-					  + zipcodeDTO.getRi()+" "
-					  + zipcodeDTO.getRoadname()+" "
-					  + zipcodeDTO.getBuildingname();
-	%>
+<c:if test="${list!=null }">
+	<c:forEach var="zipcodeDTO" items="${list }">	
+		<c:set var="address">
+			${zipcodeDTO.sido 
+			} ${zipcodeDTO.sigungu 
+			} ${zipcodeDTO.yubmyundong 
+			} ${zipcodeDTO.ri 
+			} ${zipcodeDTO.roadname 
+			} ${zipcodeDTO.buildingname }      
+		</c:set>					  
+	
 	<tr>
-		<td align="center"><%=zipcodeDTO.getZipcode() %></td>
-		<td colspan="3"><a id="addressA" href="#" onclick="checkPostClose('<%=zipcodeDTO.getZipcode() %>','<%=address %>')"><%=address %></a></td>
+		<td align="center">${zipcodeDTO.zipcode }</td>
+		<td colspan="3">
+			<a id="addressA" href="#" onclick="checkPostClose('${zipcodeDTO.zipcode }','${address }')">${address }</a>
+		</td>
 	</tr>
-	<%}//for %>
-<%}//if %>
+	</c:forEach>
+</c:if>
 </table>
 </form>
 </body>

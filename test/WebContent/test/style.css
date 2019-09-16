@@ -1,0 +1,23 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0;}
+header{text-align: center;background-color: goldenrod;height: 100px;line-height: 100px;}
+
+#nav_wrap{position: relative;background: #eaeaea;overflow: hidden;}
+#nav_wrap li{float: left;width: 50%;text-align: center; cursor: pointer;list-style-type: none;}
+#nav_wrap li:first-child{position:relative;}
+#nav_wrap li:first-child::after{content:''; position: absolute; width: 1px; height: 80%; right: -1px; top: 50%; transform: translateY(-50%); background: darkslategrey; }
+#nav_wrap .active{background-color: lightsteelblue;}
+
+.contents{position: relative; height: 500px;}
+.contents #cont_login{ position: relative; top: 50%; transform: translateY(-50%);}
+.contents #cont_login table{ width: 80%; margin: 0 auto;}
+.contents #cont_login table input{width: 100%; border: 0;}
+
+.contents #cont_login table th{ width: 30%;}
+.contents #cont_login table td{ width: 70%;}
+
+.contents #cont_signup{position: relative; top: 50%; transform: translateY(-50%);}
+.contents #cont_signup table{width: 80%; margin: 0 auto;}
+
+
+

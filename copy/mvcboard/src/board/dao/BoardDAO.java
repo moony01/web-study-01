@@ -39,6 +39,7 @@ public class BoardDAO {
 		if (instance == null) {
 			synchronized (BoardDAO.class) {
 				instance = new BoardDAO(); 
+
 			}
 		}
 		return instance;

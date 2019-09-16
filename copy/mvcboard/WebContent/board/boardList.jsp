@@ -46,7 +46,7 @@ function isLogin(seq,pg){
 	//if("${memId}"=="")
 	//	alert("먼저 로그인하세요");
 	//else
-		location.href="boardView.jsp?seq="+seq+"&pg="+pg;		
+		location.href="/mvcboard/board/boardView.do?seq="+seq+"&pg="+pg;		
 }
 </script>
 </html>
