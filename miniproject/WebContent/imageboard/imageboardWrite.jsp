@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
 window.onload=function(){
-		alert("회원가입 성공");
-		location.href="/miniproject/main/index.do";
+	alert("이미지등록 성공");
+	location.href="/miniproject/imageboard/imageboardList.do?pg=1";
 }
 </script>    

@@ -2,16 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="text/css">
 #subject {font-size: 30pt; font-weight: bold; }
 </style>
-</head>
-<body>
+
 <c:if test="${boardDTO!=null }">
 
 	<table border="1" width="450" cellspacing="0" cellpadding="5" frame="hsides" rules="rows">
@@ -29,20 +23,16 @@
 			</td>
 		</tr>
 	</table>
-	<input type="button" value="목록" onclick="location.href='/mvcboard/board/boardList.do?pg=${pg}'">
+	<input type="button" value="목록" onclick="location.href='/miniproject/board/boardList.do?pg=${pg}'">
+	<input type="button" value="답글" onclick="location.href='/miniproject/board/boardReplyForm.do?pseq=${boardDTO.seq }&pg=${pg }'">             
 	
 	<c:if test="${sessionScope.memId == boardDTO.id }">
 		<input type="button" value="글수정" onclick="location.href='boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">     
-		<input type="button" value="글삭제" onclick="">
+		<input type="button" value="글삭제" onclick="BoardDelete(${boardDTO.seq })">
 	</c:if>
 </c:if>
-</body>
-</html>
 
-
-
-
-
+<script type="text/javascript" src="../js/board.js"></script>
 
 
 

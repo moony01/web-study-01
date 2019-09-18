@@ -13,7 +13,7 @@
 		<input type="text" name="id" placeholder="아이디 입력" style="width: 200px;">
 		<input type="button" value="중복체크" onclick="checkId()">
 		<input type="hidden" name="check" value="">
-	</td>
+		</td>
 </tr>
 <tr>
 	<th width="80">비밀번호</th>

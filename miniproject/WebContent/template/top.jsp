@@ -8,7 +8,24 @@ onclick="location.href='/miniproject/main/index.do'" style="cursor: pointer;">MV
 <font size="2">
 <c:if test="${memId!=null }">
 	<a href="/miniproject/board/boardWriteForm.do">글쓰기</a>&emsp;
-	<a href="/miniproject/imageboard/imageboardWriteForm.do">이미지등록</a>&emsp;
+	
+	<c:if test="${memId eq 'admin' }">
+		<a href="/miniproject/imageboard/imageboardWriteForm.do">이미지등록</a>&emsp;
+	</c:if>
+	
+	<a href="/miniproject/imageboard/imageboardList.do?pg=1">이미지목록</a>&emsp;
 </c:if>
-<a href="/miniproject/board/boardList.do?pg=1">목록</a>
+<a href="/miniproject/board/boardList.do?pg=1">목록</a>&emsp;
+
 </font>
+
+
+
+
+
+
+
+
+
+
+
