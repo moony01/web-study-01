@@ -20,7 +20,7 @@ public class BoardListAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		
+		 
 		//1페이지당 5개씩
 		int endNum = pg*5;
 		int startNum = endNum-4;
