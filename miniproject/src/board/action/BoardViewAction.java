@@ -11,8 +11,6 @@ import board.dao.BoardDAO;
 
 public class BoardViewAction implements CommandProcess {
 
-	//페이징처리가 된 상태에서 게시글 제목을 눌러 board view 로넘어온다.
-	
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터

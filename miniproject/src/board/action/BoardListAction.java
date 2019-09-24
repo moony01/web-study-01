@@ -20,7 +20,7 @@ public class BoardListAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		 
+		
 		//1페이지당 5개씩
 		int endNum = pg*5;
 		int startNum = endNum-4;
@@ -47,7 +47,7 @@ public class BoardListAction implements CommandProcess {
 			Cookie cookie = new Cookie("memHit", "0");
 			cookie.setMaxAge(30*60);
 			response.addCookie(cookie);
-		}		
+		}
 		
 		request.setAttribute("pg", pg);
 		request.setAttribute("list", list);

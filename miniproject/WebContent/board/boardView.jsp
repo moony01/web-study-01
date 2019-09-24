@@ -28,11 +28,15 @@
 	
 	<c:if test="${sessionScope.memId == boardDTO.id }">
 		<input type="button" value="글수정" onclick="location.href='boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">     
-		<input type="button" value="글삭제" onclick="BoardDelete(${boardDTO.seq })">
+		<input type="button" value="글삭제" onclick="location.href='boardDelete.do?seq=${boardDTO.seq }'">
 	</c:if>
 </c:if>
 
-<script type="text/javascript" src="../js/board.js"></script>
+
+
+
+
+
 
 
 

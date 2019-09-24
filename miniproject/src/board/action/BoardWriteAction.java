@@ -13,7 +13,7 @@ public class BoardWriteAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		//데이터
+		//데이터-원글(첫째 줄,1페이지)
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		

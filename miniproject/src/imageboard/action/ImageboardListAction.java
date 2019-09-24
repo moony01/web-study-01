@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.control.CommandProcess;
 
 import imageboard.bean.ImageboardDTO;
+import imageboard.bean.ImageboardPaging;
 import imageboard.dao.ImageboardDAO;
 
 public class ImageboardListAction implements CommandProcess {
@@ -30,8 +31,18 @@ public class ImageboardListAction implements CommandProcess {
 		ImageboardDAO imageboardDAO = ImageboardDAO.getInstance();
 		List<ImageboardDTO> list = imageboardDAO.imageboardList(map);
 		
+		//페이징처리
+		int totalA = imageboardDAO.getImageboardTotalA();
+		ImageboardPaging imageboardPaging = new ImageboardPaging();
+		imageboardPaging.setCurrentPage(pg);
+		imageboardPaging.setPageBlock(3);
+		imageboardPaging.setPageSize(3);
+		imageboardPaging.setTotalA(totalA);
+		imageboardPaging.makePagingHTML();
+		
 		request.setAttribute("pg", pg);
 		request.setAttribute("list", list);
+		request.setAttribute("imageboardPaging", imageboardPaging);
 		request.setAttribute("display", "/imageboard/imageboardList.jsp");
 		return "/main/index.jsp";
 	}

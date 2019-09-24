@@ -22,6 +22,21 @@
 		) where rn>=#{startNum} and rn<=#{endNum}
 		]]>
 	</select>
+	
+	<select id="imageboardView" parameterType="int" resultType="imageboard">
+		select * from imageboard where seq=#{seq}
+	</select>
+	
+	<select id="getImageboardTotalA" resultType="int">
+		select count(*) from imageboard
+	</select>
+	
+	<delete id="imageboardDelete" parameterType="java.util.Map">
+		delete imageboard where seq in
+		<foreach collection="check" item="seq" index="i" open="(" close=")" separator=",">
+			#{seq}
+		</foreach>
+	</delete>
 </mapper>
 
 

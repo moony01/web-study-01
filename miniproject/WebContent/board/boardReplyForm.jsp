@@ -3,8 +3,8 @@
 
 <h3>답글쓰기</h3>
 <form name="boardReplyForm" method="post" action="/miniproject/board/boardReply.do">
-<input type="hidden" name="pseq" value="${pseq}" >
-<input type="hidden" name="pg" value="${pg}" >
+<input type="hidden" name="pseq" value="${pseq }">
+<input type="hidden" name="pg" value="${pg }">
 <table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<th>제목</th>

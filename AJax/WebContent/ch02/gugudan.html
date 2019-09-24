@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="gugudanForm" method="get">
+	<input type="text" name="dan" placeholder="단 입력">
+	<input type="button" value="결과" onclick="getResult()">
+</form>
+<div id="resultDiv"></div>
+</body>
+
+<script type="text/javascript">
+var xhr = null;
+function getResult(){
+	var dan = document.gugudanForm.dan.value;
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = result;
+	xhr.open("GET", "getGugudan.jsp?dan="+dan, true);
+	xhr.send();
+}
+
+function result() {
+	if(xhr.readyState == 4 ){
+		if(xhr.status == 200){
+			var resultDiv = document.getElementById("resultDiv");
+			resultDiv.innerHTML = xhr.responseText;
+		}
+	}
+}
+</script>
+</html>

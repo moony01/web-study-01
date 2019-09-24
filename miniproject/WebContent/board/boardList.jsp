@@ -21,7 +21,7 @@
 				${boardDTO.seq }
 			</c:if>
 			</td>
-			<td width="200">
+			<td width="400">
 				<c:forEach var="i" begin="1" end="${boardDTO.lev }" step="1">
 					&emsp;
 				</c:forEach>
@@ -41,7 +41,7 @@
 </table>
 </c:if>
 
-<div style="float: left; width:700px; text-align: center;">
+<div style="width:700px; text-align: center;">
 	${boardPaging.pagingHTML }
 </div>
 <br><br>
@@ -59,7 +59,6 @@
 </form>
 
 <script type="text/javascript">
-
 function isLogin(seq, pg){
 	if("${memId}"=="")
 		alert("먼저 로그인하세요");
@@ -72,7 +71,16 @@ window.onload=function(){
 		document.getElementById('searchOption').value = '${searchOption}';
 }
 
+function boardSearch(pg){
+	location.href="/miniproject/board/boardSearch.do?pg="+pg
+			+"&searchOption=${searchOption}"
+			+"&keyword="+encodeURIComponent("${keyword}");
+}
 </script>
+
+
+
+
 
 
 

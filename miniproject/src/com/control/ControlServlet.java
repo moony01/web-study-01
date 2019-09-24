@@ -1,6 +1,7 @@
 package com.control;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +22,7 @@ public class ControlServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		String propertyConfig = config.getInitParameter("propertyConfig");
-		System.out.println("propertyConfig = "+propertyConfig+"\n");
+		System.out.println("propertyConfig="+propertyConfig);
 		
 		FileInputStream fin = null;
 		Properties properties = new Properties();
@@ -29,31 +30,29 @@ public class ControlServlet extends HttpServlet {
 		try {
 			fin = new FileInputStream(propertyConfig);
 			properties.load(fin);
-			System.out.println("properties = "+properties);
-			
+			System.out.println("properties="+properties);
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
+		}finally {
 			try {
 				fin.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		System.out.println();
 		
 		Iterator it = properties.keySet().iterator();
 		while(it.hasNext()) {
 			String key = (String)it.next();
-			System.out.println("key = "+key);
+			System.out.println("key="+key);
 			
 			String className = properties.getProperty(key);
-			System.out.println("className = "+className);
+			System.out.println("className="+className);
 			
 			try {
-				Class<?> classType = Class.forName(className);
+				Class classType = Class.forName(className);
 				Object ob = classType.newInstance();
-				
 				System.out.println("ob = "+ob);
 				
 				map.put(key, ob);
@@ -64,17 +63,17 @@ public class ControlServlet extends HttpServlet {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} 			
-			System.out.println();
+			}			
+			
 		}//while
 	}
-
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	}
@@ -86,24 +85,23 @@ public class ControlServlet extends HttpServlet {
 		if(request.getMethod().equals("POST")){
 			request.setCharacterEncoding("UTF-8");
 		}
-		
+				
 		String category = request.getServletPath();
-		System.out.println("category = "+category);
+		System.out.println("category="+category);
 		
-		CommandProcess commandProcess = (CommandProcess)map.get(category);
-		System.out.println("commandProcess = "+commandProcess);
+		CommandProcess commandProcess = (CommandProcess) map.get(category);
+		System.out.println("commandProcess="+commandProcess);
 		
 		String view = null;
 		try {
-			view = commandProcess.requestPro(request, response);
+			view = commandProcess.requestPro(request, response);//호출
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		
-		//forward	
+		//forward
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);//상대번지
 		dispatcher.forward(request, response);//제어권 넘기기
-			
 	}
 }
 

@@ -33,6 +33,30 @@ public class BoardPaging {
 		if(endPage < totalP)
 			pagingHTML.append("[<a id='paging' href='boardList.do?pg="+(endPage+1)+"'>다음</a>]");
 	}
+
+	public void makeSearchPagingHTML() {
+		pagingHTML = new StringBuffer();
+		
+		int totalP = (totalA+pageSize-1)/pageSize;//총페이지수
+		
+		int startPage = (currentPage-1)/pageBlock*pageBlock+1;
+		int endPage = startPage+pageBlock-1;
+		if(endPage > totalP) 
+			endPage = totalP;
+		
+		if(startPage>pageBlock)
+			pagingHTML.append("[<span id='paging' onclick='boardSearch("+(startPage-1)+")'>이전</span>]");                                             
+				
+		for(int i=startPage; i<=endPage; i++) {
+			if(i==currentPage)
+				pagingHTML.append("[<span id='currentPaging' onclick='boardSearch("+i+")'>"+i+"</span>]");
+			else
+				pagingHTML.append("[<span id='paging' onclick='boardSearch("+i+")'>"+i+"</span>]");
+		}
+		
+		if(endPage < totalP)
+			pagingHTML.append("[<span id='paging' onclick='boardSearch("+(endPage+1)+")'>다음</span>]");
+	}
 }
 
 
