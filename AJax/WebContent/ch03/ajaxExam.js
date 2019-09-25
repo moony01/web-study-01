@@ -12,7 +12,6 @@ function resultProcess(){
 			processXML();
 		}
 	}
-		
 }
 
 function processXML () {
