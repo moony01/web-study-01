@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<img src="../image/lion.gif" width="200" height="200">
+
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('img').mouseover(function(){
+		$(this).attr('src','../image/lion2.gif');
+	}).mouseout(function(){
+		$(this).attr('src','../image/lion3.gif');
+	});
+});
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
