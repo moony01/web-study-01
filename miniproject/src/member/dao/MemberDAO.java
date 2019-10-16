@@ -70,7 +70,6 @@ public class MemberDAO {
 	
 	public List<ZipcodeDTO> getZipcodeList(String sido, String sigungu, String roadname){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("sido", sido);
 		map.put("sigungu", sigungu);

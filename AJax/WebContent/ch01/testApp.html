@@ -17,8 +17,7 @@ var xhr = null;
 function testToServer(){
 	name = encodeURIComponent(document.inputForm.name.value);
 	birth = document.inputForm.birth.value;
-	
-	
+
 	xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = testFromServer;
 	xhr.open("POST", "test.jsp", true);

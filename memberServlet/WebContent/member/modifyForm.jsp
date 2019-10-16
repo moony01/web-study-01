@@ -3,13 +3,9 @@
 <%@ page import="member.bean.MemberDTO" %>
 <%@ page import="member.dao.MemberDAO" %>
 <%
-
 //DB
 MemberDTO memberDTO = new MemberDTO();
-
-
 MemberDAO memberDAO = MemberDAO.getInstance();
-
 %>
 
 <!DOCTYPE html>

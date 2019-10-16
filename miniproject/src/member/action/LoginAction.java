@@ -25,7 +25,6 @@ public class LoginAction implements CommandProcess {
 		String loginResult=null;
 		if(memberDTO==null) {
 			loginResult = "fail";
-			
 		}else{
 			//세션
 			HttpSession session = request.getSession();
